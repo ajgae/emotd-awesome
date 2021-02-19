@@ -27,7 +27,7 @@ Your contents of the words file should follow this syntax:
 
 ### history
 
-`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session. This is meant to let you skim through the words quickly without having to worry about clicking away from the right word. By default only a few words are remembered by default, but you can change this number via the [arguments](#arguments/settings).
+`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session, by right-clicking instead of left-clicking on the widget. This is meant to let you skim through words quickly without having to worry about inadvertently clicking away from a word that you liked. By default only a few words are remembered by default, but you can change this amount via the [arguments](#arguments/settings).
 
 **NB:** the history feature is currently badly implemented and broken. It should *basically* work but it needs improvement. For example, you can't go back and then forward again in history: moving forward after moving back will overwrite the history that you backed through with new random words. Contributions welcome!
 
