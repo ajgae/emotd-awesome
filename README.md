@@ -34,7 +34,11 @@ Once you have the code somewhere on your filesystem, installing is easy.
   ```
 6. [optional] See the [arguments](#argumentssettings) section to change the `emotd` configuration.
 
-[1]: you may, instead, create symlinks to the `emotd.lua` and `~/.emotd_words` files that lie in your cloned repository. This is useful if you intend on making modifications to the widget's source. To do this, run `ln -sv <your-repository-location>/emotd.lua ~/.config/awesome/my-widgets/emotd.lua` and `ln -sv <your-repository-location>/.emotd_words ~/.emotd_words`.
+[1]: you may, instead, create symlinks to the `emotd.lua` and `~/.emotd_words` files that lie in your cloned repository. This is useful if you intend on making modifications to the widget's source. To do this, run the following commands with the adequate folder names:
+```
+$ ln -sv <your-repository-location>/emotd.lua ~/.config/awesome/my-widgets/emotd.lua
+$ ln -sv <your-repository-location>/.emotd_words ~/.emotd_words
+```
 
 ### what is emotional literacy?
 
