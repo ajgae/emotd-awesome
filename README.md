@@ -6,6 +6,36 @@ You can set the word to another random word by simply clicking on the widget. Th
 
 `emotd` stands for "emotion of the day". Credits to my dad for finding this name.
 
+### installation
+
+Once you have the code somewhere on your filesystem, installing is easy.
+1. Copy the `.emotd_words` file to your home folder (`~/`).
+2. Your `rc.lua` awesome config file is, by default, found in the `~/.config/awesome/` directory.
+3. In that directory, create a subdirectory (e.g. `my-widgets`).
+4. Copy the `emotd.lua` file to that directory[^1].
+5. Edit your `rc.lua` file according to the following directives (`-- ...` denotes an ellipsis):
+  ```lua
+  -- ...
+  -- put this at the top of the document, near the other `require` statements
+  local widget_emotd = require("my-widgets.emotd")
+  -- ...
+  -- there should be a line like the following somewhere in your rc.lua
+  awful.screen.connect_for_each_screen(function(s)
+  -- ...
+      s.mywibox:setup {
+      -- ...
+      { -- Right widgets
+          -- the following line is there in the default rc.lua
+          layout = wibox.layout.fixed.horizontal,
+          -- add your emotd widget right here to have it appear at the
+          -- right of the left-aligned section of your status bar
+          widget_emotd(), -- that's all you need for a default emotd configuration
+          -- ...
+  ```
+6. [optional] See the [arguments](#argumentssettings) section to change the `emotd` configuration.
+
+[^1]: you may, instead, create symlinks to the `emotd.lua` and `~/.emotd_words` files that lie in your cloned repository. This is useful if you intend on making modifications to the widget's source. To do this, run `ln -sv <your-repository-location>/emotd.lua ~/.config/awesome/my-widgets/emotd.lua` and `ln -sv <your-repository-location>/.emotd_words ~/.emotd_words`.
+
 ### what is emotional literacy?
 
 This widget was greatly inspired by the [EQI.org](http://eqi.org/elit.htm) website, which defines emotional literacy as
@@ -18,7 +48,7 @@ As any skill, emotional literacy can be practiced. This is where `emotd` may hel
 
 ### words file
 
-The default location of the words file is `~/.emotd_words`. You can change this location via the [arguments](#arguments/settings).
+The default location of the words file is `~/.emotd_words`. You can change this location via the [arguments](#argumentssettings). A sample words file, shamelessly copied from [this webpage](http://www.psychpage.com/learning/library/assess/feelings.html), is given in this repository.
 
 Your contents of the words file should follow this syntax:
 - one word (can include whitespace) per line
@@ -27,13 +57,13 @@ Your contents of the words file should follow this syntax:
 
 ### history
 
-`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session. This is meant to let you skim through the words quickly without having to worry about clicking away from the right word. By default only a few words are remembered by default, but you can change this number via the [arguments](#arguments/settings).
+`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session. This is meant to let you skim through the words quickly without having to worry about clicking away from the right word. By default only a few words are remembered by default, but you can change this number via the [arguments](#argumentssettings).
 
 **NB:** the history feature is currently badly implemented and broken. It should *basically* work but it needs improvement. For example, you can't go back and then forward again in history: moving forward after moving back will overwrite the history that you backed through with new random words. Contributions welcome!
 
 ### arguments/settings
 
-When calling `emotd` from your `rc.lua` configuration file, you can customize some aspects of its behaviour by passing a table as a parameter to `emotd`. If this table is omitted, the default settings will be used.
+When calling `emotd` from your `rc.lua` configuration file, you can customize some aspects of its behaviour by passing a table as a parameter to the `emotd` call. If this table is omitted, the default settings will be used.
 
 | table index | default value | explanation |
 | ----------- | ------------- | ----------- |
@@ -41,3 +71,14 @@ When calling `emotd` from your `rc.lua` configuration file, you can customize so
 | `prefix` | `""` | a prefix that will appear before the word displayed in the widget |
 | `suffix` | `""` | a suffix that will appear after the word displayed in the widget |
 | `hist_count` | `10` | the number of words kept in history |
+
+Here is an example of a custom `emotd` call in your `rc.lua`:
+```lua
+-- ...
+widget_emotd({
+    prefix = "| ",
+    suffix = " |",
+    hist_count = 20,
+}),
+-- ...
+```
