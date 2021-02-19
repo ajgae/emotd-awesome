@@ -2,7 +2,7 @@
 
 `emotd` is a simple and sweet widget for the `awesome` X11 window manager. It displays a feeling word, picked at random from a user-defined text file, in your `awesome` status bar.
 
-You can set the word to another random word by simply clicking on the widget. The idea is that you can cycle through different words until you find one that describes your current mood.
+You can set the word to another random word by simply clicking on the widget. The idea is that you can cycle through different words until you find one that describes your current mood. Right-clicking brings you back through the [history](#history).
 
 `emotd` stands for "emotion of the day". Credits to my dad for finding this name.
 
@@ -18,7 +18,7 @@ As any skill, emotional literacy can be practiced. This is where `emotd` may hel
 
 ### words file
 
-The default location of the words file is `~/.emotd_words`. You can change this location via the [arguments](#arguments/settings).
+The default location of the words file is `~/.emotd_words`. You can change this location via the [arguments](#argumentssettings).
 
 Your contents of the words file should follow this syntax:
 - one word (can include whitespace) per line
@@ -27,7 +27,7 @@ Your contents of the words file should follow this syntax:
 
 ### history
 
-`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session, by right-clicking instead of left-clicking on the widget. This is meant to let you skim through words quickly without having to worry about inadvertently clicking away from a word that you liked. By default only a few words are remembered by default, but you can change this amount via the [arguments](#arguments/settings).
+`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session, by right-clicking instead of left-clicking on the widget. This is meant to let you skim through words quickly without having to worry about inadvertently clicking away from a word that you liked. By default only a few words are remembered by default, but you can change this amount via the [arguments](#argumentssettings).
 
 **NB:** the history feature is currently badly implemented and broken. It should *basically* work but it needs improvement. For example, you can't go back and then forward again in history: moving forward after moving back will overwrite the history that you backed through with new random words. Contributions welcome!
 
