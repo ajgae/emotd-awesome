@@ -64,14 +64,13 @@ local function worker(user_args)
     end
 
     -- Keep track of history
-    -- TODO find a better history system, currently moving
-    -- cycling an array modulo hist_count
-    -- FIXME current history system not working, first right
-    -- click does nothing
+    -- TODO find a better history system, currently cycling modulo `hist_count`
+    -- through an array
     local hist = {}
     local hist_index = 1
+    -- initially fill history with placeholder values
     for i = 2, hist_count do
-        hist[i] = 0
+        hist[i] = i
     end
 
     do
@@ -95,10 +94,8 @@ local function worker(user_args)
                 hist[hist_index] = word
                 result = word
             elseif button == 3 then -- Move back in history
-                if not (#hist < 1) then
-                    hist_index = decrement(hist_index, hist_count)
-                    result = hist[hist_index]
-                end
+                hist_index = decrement(hist_index, hist_count)
+                result = hist[hist_index]
             end
             emotd_widget.text = render_text(result)
         end
