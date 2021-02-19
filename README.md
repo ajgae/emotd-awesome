@@ -18,13 +18,32 @@ As any skill, emotional literacy can be practiced. This is where `emotd` may hel
 
 ### words file
 
-The default location of the words file is `~/.emotd_words`. You can change this by specifying [arguments](#arguments/settings) when calling `emotd` from your `rc.lua` configuration file.
+The default location of the words file is `~/.emotd_words`. You can change this location via the [arguments](#arguments/settings).
 
 Your contents of the words file should follow this syntax:
 - one word (can include whitespace) per line
 - empty lines are ignored
 - lines whose first non-whitespace character is `#` are treated as comments and ignored
 
+### history
+
+`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session. This is meant to let you skim through the words quickly without having to worry about clicking away from the right word. By default only a few history slots are enabled, but you can change via the [arguments](#arguments/settings).
+
+**NB:** the history feature is currently badly implemented and broken. It should *basically* work but it needs improvement. Contributions welcome!
+
 ### arguments/settings
 
-<!-- TODO -->
+When calling `emotd` from your `rc.lua` configuration file, you can customize some aspects of its behaviour by passing a table as a parameter to `emotd`. If this table is omitted, the default settings will be used.
+
+```lua
+-- the default configuration table for `emotd`
+{
+    -- the file containing the words that `emotd` will picked from
+    words_file = <home>/.emotd_words,
+    -- a prefix and a suffix: strings that will appear before and after the displayed word
+    prefix = "",
+    suffix = "",
+    -- the number of words kept in history
+    hist_count = 5,
+}
+```

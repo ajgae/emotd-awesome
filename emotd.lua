@@ -42,7 +42,7 @@ local emotd_widget = {}
 local function worker(user_args)
     -- Handle user arguments
     local args = user_args or {}
-    local word_file = args.words_file or WORDS_FILE_DEFAULT
+    local words_file = args.words_file or WORDS_FILE_DEFAULT
     local prefix = args.prefix or ""
     local suffix = args.suffix or ""
     local hist_count = args.hist_count or 5
@@ -52,11 +52,11 @@ local function worker(user_args)
         return prefix .. text .. suffix
     end
 
-    -- Returns a random line from the word_file
+    -- Returns a random line from the words_file
     local function get_random_word()
         local word
         repeat -- Find a random non-comment, non-empty line
-            local f = assert(io.popen("shuf " .. word_file, "r"))
+            local f = assert(io.popen("shuf " .. words_file, "r"))
             word = f:read("*l")
         until not(word == "") and not(word:match("^[ \t]*#.*"))
         return word
