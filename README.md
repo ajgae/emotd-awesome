@@ -40,4 +40,4 @@ When calling `emotd` from your `rc.lua` configuration file, you can customize so
 | `words_file` |  `~/.emotd_words` | the file containing the feeling words |
 | `prefix` | `""` | a prefix that will appear before the word displayed in the widget |
 | `suffix` | `""` | a suffix that will appear after the word displayed in the widget |
-| `hist_count` | `5` | the number of words kept in history |
+| `hist_count` | `10` | the number of words kept in history |
