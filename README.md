@@ -12,7 +12,7 @@ Once you have the code somewhere on your filesystem, installing is easy.
 1. Copy the `.emotd_words` file to your home folder (`~/`).
 2. Your `rc.lua` awesome config file is, by default, found in the `~/.config/awesome/` directory.
 3. In that directory, create a subdirectory (e.g. `my-widgets`).
-4. Copy the `emotd.lua` file to that directory[^1].
+4. Copy the `emotd.lua` file to that directory[1].
 5. Edit your `rc.lua` file according to the following directives (`-- ...` denotes an ellipsis):
   ```lua
   -- ...
@@ -24,17 +24,17 @@ Once you have the code somewhere on your filesystem, installing is easy.
   -- ...
       s.mywibox:setup {
       -- ...
-      { -- Right widgets
-          -- the following line is there in the default rc.lua
-          layout = wibox.layout.fixed.horizontal,
-          -- add your emotd widget right here to have it appear at the
-          -- right of the left-aligned section of your status bar
-          widget_emotd(), -- that's all you need for a default emotd configuration
-          -- ...
+        { -- Right widgets
+            -- the following line is there in the default rc.lua
+            layout = wibox.layout.fixed.horizontal,
+            -- add your emotd widget right here to have it appear at the
+            -- right of the left-aligned section of your status bar
+            widget_emotd(), -- that's all you need for a default emotd configuration
+            -- ...
   ```
 6. [optional] See the [arguments](#argumentssettings) section to change the `emotd` configuration.
 
-[^1]: you may, instead, create symlinks to the `emotd.lua` and `~/.emotd_words` files that lie in your cloned repository. This is useful if you intend on making modifications to the widget's source. To do this, run `ln -sv <your-repository-location>/emotd.lua ~/.config/awesome/my-widgets/emotd.lua` and `ln -sv <your-repository-location>/.emotd_words ~/.emotd_words`.
+[1]: you may, instead, create symlinks to the `emotd.lua` and `~/.emotd_words` files that lie in your cloned repository. This is useful if you intend on making modifications to the widget's source. To do this, run `ln -sv <your-repository-location>/emotd.lua ~/.config/awesome/my-widgets/emotd.lua` and `ln -sv <your-repository-location>/.emotd_words ~/.emotd_words`.
 
 ### what is emotional literacy?
 
@@ -72,7 +72,7 @@ When calling `emotd` from your `rc.lua` configuration file, you can customize so
 | `suffix` | `""` | a suffix that will appear after the word displayed in the widget |
 | `hist_count` | `10` | the number of words kept in history |
 
-Here is an example of a custom `emotd` call in your `rc.lua`:
+Here is an example of a custom `emotd` call in `rc.lua`:
 ```lua
 -- ...
 widget_emotd({
