@@ -27,7 +27,7 @@ Your contents of the words file should follow this syntax:
 
 ### history
 
-`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session. This is meant to let you skim through the words quickly without having to worry about clicking away from the right word. By default only a few history slots are enabled, but you can change via the [arguments](#arguments/settings).
+`emotd` allows you to cycle back through the history of the words that appeard in the widget in this session. This is meant to let you skim through the words quickly without having to worry about clicking away from the right word. By default only a few words are remembered by default, but you can change this number via the [arguments](#arguments/settings).
 
 **NB:** the history feature is currently badly implemented and broken. It should *basically* work but it needs improvement. Contributions welcome!
 
@@ -35,15 +35,9 @@ Your contents of the words file should follow this syntax:
 
 When calling `emotd` from your `rc.lua` configuration file, you can customize some aspects of its behaviour by passing a table as a parameter to `emotd`. If this table is omitted, the default settings will be used.
 
-```lua
--- the default configuration table for `emotd`
-{
-    -- the file containing the words that `emotd` will picked from
-    words_file = <home>/.emotd_words,
-    -- a prefix and a suffix: strings that will appear before and after the displayed word
-    prefix = "",
-    suffix = "",
-    -- the number of words kept in history
-    hist_count = 5,
-}
-```
+| table index | default value | explanation |
+| ----------- | ------------- | ----------- |
+| `words_file` |  `~/.emotd_words` | the file containing the feeling words |
+| `prefix` | `""` | a prefix that will appear before the word displayed in the widget |
+| `suffix` | `""` | a suffix that will appear after the word displayed in the widget |
+| `hist_count` | `5` | the number of words kept in history |
