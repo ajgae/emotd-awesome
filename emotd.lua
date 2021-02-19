@@ -45,7 +45,7 @@ local function worker(user_args)
     local words_file = args.words_file or WORDS_FILE_DEFAULT
     local prefix = args.prefix or ""
     local suffix = args.suffix or ""
-    local hist_count = args.hist_count or 5
+    local hist_count = args.hist_count or 10
 
     -- Returns the text as it should be displayed in the widget
     local function render_text(text)
@@ -56,6 +56,7 @@ local function worker(user_args)
     local function get_random_word()
         local word
         repeat -- Find a random non-comment, non-empty line
+            -- this uses `shuf` from the GNU coreutils to get a random line
             local f = assert(io.popen("shuf " .. words_file, "r"))
             word = f:read("*l")
         until not(word == "") and not(word:match("^[ \t]*#.*"))
@@ -68,14 +69,14 @@ local function worker(user_args)
     -- FIXME current history system not working, first right
     -- click does nothing
     local hist = {}
-    local hist_index = 2
+    local hist_index = 1
+    for i = 2, hist_count do
+        hist[i] = 0
+    end
 
     do
         local init_word = get_random_word()
         hist[1] = init_word
-        for i = 2, hist_count do
-            hist[i] = 0
-        end
         -- Build the widget
         emotd_widget = wibox.widget {
             text = render_text(init_word),
@@ -90,8 +91,8 @@ local function worker(user_args)
             local result
             if button == 1 then -- New random word
                 local word = get_random_word()
-                hist[hist_index] = word
                 hist_index = increment(hist_index, hist_count)
+                hist[hist_index] = word
                 result = word
             elseif button == 3 then -- Move back in history
                 if not (#hist < 1) then
