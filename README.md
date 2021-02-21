@@ -9,10 +9,10 @@ You can set the word to another random word by simply clicking on the widget. Th
 ### installation
 
 Once you have the code somewhere on your filesystem, installing is easy.
-1. Copy the `.emotd_words` file to your home folder (`~/`).
-2. Your `rc.lua` awesome config file is, by default, found in the `~/.config/awesome/` directory.
-3. In that directory, create a subdirectory (e.g. `my-widgets`).
-4. Copy the `emotd.lua` file to that directory[1].
+
+1. Copy[1] the `.emotd_words` file to your home folder (`~`).
+2. Your `rc.lua` awesome config file is, by default, found in the `~/.config/awesome/` directory. In that directory, create a subdirectory (e.g. `my-widgets`).
+4. Copy[1] the `emotd.lua` file to that directory.
 5. Edit your `rc.lua` file according to the following directives (`-- ...` denotes an ellipsis):
   ```lua
   -- ...
@@ -34,10 +34,9 @@ Once you have the code somewhere on your filesystem, installing is easy.
   ```
 6. [optional] See the [arguments](#argumentssettings) section to change the `emotd` configuration.
 
-[1]: you may, instead, create symlinks to the `emotd.lua` and `~/.emotd_words` files that lie in your cloned repository. This is useful if you intend on making modifications to the widget's source. To do this, run the following commands with the adequate folder names:
+[1]: you may, instead, create a symlink to the `emotd.lua` file that lies in your cloned repository (and eventually do the same for a words file found somewhere else on your filesystem). This is useful if you intend on making modifications to the widget's source. To do this, run the following command with the adequate folder name:
 ```
 $ ln -sv <your-repository-location>/emotd.lua ~/.config/awesome/my-widgets/emotd.lua
-$ ln -sv <your-repository-location>/.emotd_words ~/.emotd_words
 ```
 
 ### what is emotional literacy?
