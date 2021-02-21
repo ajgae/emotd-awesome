@@ -28,7 +28,7 @@ Once you have the code somewhere on your filesystem, installing is easy.
             -- the following line is there in the default rc.lua
             layout = wibox.layout.fixed.horizontal,
             -- add your emotd widget right here to have it appear at the
-            -- right of the left-aligned section of your status bar
+            -- left of the right-aligned section of your status bar
             widget_emotd(), -- that's all you need for a default emotd configuration
             -- ...
   ```
