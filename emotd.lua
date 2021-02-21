@@ -5,7 +5,7 @@
 -- Whenever you feel like it, scroll through random feeling
 -- words until you find one that describes your current mood.
 --
--- @author: categorille @ protonmail dot com
+-- @author: categorille at protonmail dot com
 -- @copyleft 2021 categorille
 ------------------------------------------------------------------
 
@@ -63,15 +63,13 @@ local function worker(user_args)
         return word
     end
 
-    -- Keep track of history
-    -- TODO find a better history system, currently cycling modulo `hist_count`
-    -- through an array
+    -- Cyclic array modulo `hist_count` containing recent words
     local hist = {}
+    -- Current index we are at in the history array
+    -- (always `1 <= hist_index <= hist_count`)
     local hist_index = 1
-    -- initially fill history with placeholder values
-    for i = 2, hist_count do
-        hist[i] = i
-    end
+    -- How far back we are in history, 1 means not in history
+    local hist_back_index = 1
 
     do
         local init_word = get_random_word()
@@ -85,16 +83,34 @@ local function worker(user_args)
         }
     end
 
+    -- React to clicks
     emotd_widget:connect_signal("button::press", function(_, _, _, button)
+        -- Only react to right and left clicks
         if (button == 1 or button == 3) then
             local result
-            if button == 1 then -- New random word
-                local word = get_random_word()
+            -- Left click
+            if button == 1 then
                 hist_index = increment(hist_index, hist_count)
-                hist[hist_index] = word
-                result = word
-            elseif button == 3 then -- Move back in history
-                hist_index = decrement(hist_index, hist_count)
+                -- New random word, overriding the oldest history slot
+                if hist_back_index == 1 then 
+                    local word = get_random_word()
+                    hist[hist_index] = word
+                    result = word
+                -- Go forward existing history
+                else 
+                    hist_back_index = hist_back_index - 1
+                    result = hist[hist_index]
+                end
+            -- Right click, go back history
+            elseif button == 3 then
+                -- Can't go back further than `hist_count`
+                if not (hist_back_index == hist_count)
+                -- Can't go back if there is no history
+                   and not (hist[decrement(hist_index, hist_count)] == nil)
+                   then
+                    hist_back_index = hist_back_index + 1
+                    hist_index = decrement(hist_index, hist_count)
+                end
                 result = hist[hist_index]
             end
             emotd_widget.text = render_text(result)
