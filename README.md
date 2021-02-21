@@ -46,9 +46,9 @@ This widget was greatly inspired by the [EQI.org](http://eqi.org/elit.htm) websi
 
 > The ability to express feelings with specific feeling words, in 3 word sentences. (S. Hein, 1996)
 
-Being able to express our own feeling is important for mental health. It lets us identify patterns in the evolution of our emotions, as well as the conditions that lead to the reproduction of these patterns, which allows us to develop strategies in order to to either avoid or better reproduce these conditions. At the very least, being able to finally word out an emotion we have been struggling for some time is often, in of itself, a relief. 
+Being able to express our own feeling is important for mental health. Being able to finally word out an emotion we have been struggling for some time is often, in of itself, a relief. But more importantly, emotional literacy lets us identify patterns in the evolution of our emotions, as well as the life conditions (social, work/studies-related, etc.) that lead to the reproduction of these patterns. This, in turn, allows us to better develop strategies that seek to either reproduce or avoid these conditions.
 
-As any skill, emotional literacy can be practiced. This is where `emotd` may help: throughout your day, whenever you put your eyes on your status bar, you may choose to cycle through a few words until you find one that fits your current mood. This process will let you keep track of how your mood evolves as your day goes by. You might even learn a few new words along the way!
+As any skill, emotional literacy can be practiced. This is where emotd may help: throughout your day, whenever you put your eyes on your status bar, you may choose to cycle through a few words until you find one that fits your current mood. You can phrase out the 3-word sentence "I feel \<word\>" in your head to see if it really does seem like the right word. Repeating this process throughout your day will increase your familiarity with the handling of feeling words, thereby improving your emotional literacy.
 
 ### words file
 
@@ -71,7 +71,7 @@ When calling `emotd` from your `rc.lua` configuration file, you can customize so
 
 | table index | default value | explanation |
 | ----------- | ------------- | ----------- |
-| `words_file` |  `~/.emotd_words` | the file containing the feeling words |
+| `words_file` | `~/.emotd_words` | the file containing the feeling words |
 | `prefix` | `""` | a prefix that will appear before the word displayed in the widget |
 | `suffix` | `""` | a suffix that will appear after the word displayed in the widget |
 | `hist_count` | `10` | the number of words kept in history |
